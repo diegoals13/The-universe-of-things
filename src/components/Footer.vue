@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <main>
+  
     <footer class="text-center text-white" style="background-color: #45637d;">
   <!-- Grid container -->
   
@@ -16,7 +16,7 @@
   </div>
   <!-- Copyright -->
 </footer>
-    <TheWelcome />
-  </main>
+
+ 
 </template>
 <style></style>
