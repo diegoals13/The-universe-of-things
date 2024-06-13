@@ -7,7 +7,7 @@ import Footer from '../components/Footer.vue'
   <main>
     
    <Header></Header>
-   <h1>HOME</h1>
+   <h1>favorites</h1>
    <Footer></Footer>
     <TheWelcome />
   </main>
