@@ -15,6 +15,7 @@ import CardHome from '@/components/CardHome.vue'
   <Logo></Logo>
   <Filter></Filter>
   <CardHome></CardHome>
+
   </main>
   <Footer></Footer>
 </template>
