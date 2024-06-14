@@ -5,7 +5,7 @@
     <img src="../assets/img/logodragonBall.png" alt="logodragonBall" />
   </div>
 </template>
-<style lang="scss">
+<style lang="scss" scoped>
 #containerlogo {
   display: flex;
   justify-content: center;
