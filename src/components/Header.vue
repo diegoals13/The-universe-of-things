@@ -1,33 +1,55 @@
-<script setup>
-</script>
+<script setup></script>
 
 <template>
   <main>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarText">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <RouterLink to="/"><a class="nav-link active" aria-current="page" href="#">Home</a></RouterLink>
-        </li>
-        <li class="nav-item">
-          <RouterLink to="/planets"> <a class="nav-link" href="#">Planets</a></RouterLink>
-        </li>
-        <li class="nav-item">
-          <RouterLink to="/login"> <a class="nav-link" href="#">Login</a></RouterLink>
-        </li>
-        <li class="nav-item">
-          <RouterLink to="/favorites"> <a class="nav-link" href="#">Favorites</a></RouterLink>
-        </li>
-      </ul>
-     
-    </div>
-  </div>
-</nav>
+    <nav class="navbar navbar-expand">
+      <div class="container-fluid justify-content-center">
+        <ul class="navbar-nav mt-3 mb-3">
+          <li class="nav-item me-5 ms-5">
+            <RouterLink to="/"
+              ><a class="nav-link activated" aria-current="page" href="#"
+                >Home</a
+              ></RouterLink
+            >
+          </li>
+          <li class="nav-item me-5 ms-5">
+            <RouterLink to="/planets">
+              <a class="nav-link" href="#">Planets</a></RouterLink
+            >
+          </li>
+          <li class="nav-item me-5 ms-5">
+            <RouterLink to="/login">
+              <a class="nav-link" href="#">Login</a></RouterLink
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
     <TheWelcome />
   </main>
 </template>
+
+<style lang="scss">
+.navbar {
+  background-color: #373a40 !important;
+  border: 2px solid rgba(0, 0, 0, 0.8);
+  max-height: 60px;
+
+  a {
+    color: white;
+    text-decoration: none;
+    text-shadow: 1px 1px 0 #000, -1px -1px 0 #000, -1px 1px 0 #000,
+      1px -1px 0 #000, 1px 0 0 #000, -1px 0 0 #000, 0 1px 0 #000, 0 -1px 0 #000;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  a :hover {
+    color: #ffb800;
+  }
+
+  .activated {
+    color: #ffb800;
+  }
+}
+</style>
