@@ -1,13 +1,14 @@
 <script setup>
 import Header from '../components/Header.vue'
 import Footer from '../components/Footer.vue'
+import Logo from "@/components/Logo.vue";
 import CardPlanet from '../components/CardPlanet.vue'
 </script>
 <template>
 
 <Header></Header>
   <main>
-    
+  <Logo></Logo>
  <CardPlanet></CardPlanet>
    
  
