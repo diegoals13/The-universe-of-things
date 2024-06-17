@@ -7,7 +7,8 @@
       <div class="card h-100" id="cardcontent">
         <div id="contentimg">
         <img src="https://dragonball-api.com/characters/goku_normal.webp" class="card-img-top " alt="..." />
-         </div>
+        <img src="../assets/img/star.svg">
+      </div>
         <div class="card-body">
           <h5 class="card-title">Name</h5>
           <p class="card-text">
