@@ -1,5 +1,6 @@
 <script setup>
 import PlanetCard from '@/components/PlanetCard.vue'
+
 </script>
 <template>
 
