@@ -1,5 +1,4 @@
 <script setup></script>
-
 <template>
   <main>
     <footer class="text-center text-white p-3">
@@ -21,7 +20,6 @@ footer {
   bottom: 0;
   width: 100%;
   color: white;
-
   a {
     color: white;
     text-decoration: none;
@@ -30,7 +28,6 @@ footer {
     font-size: 15px;
     font-weight: 500;
   }
-
   a:hover {
     color: #ffb800;
     cursor: pointer;
