@@ -2,16 +2,13 @@
 
 <template>
   <main>
-    <footer class="text-center text-white" style="background-color: #45637d">
-      <!-- Grid container -->
-
-      <!-- Grid container -->
-
-      <!-- Copyright -->
-      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
-        © 2024 Copyright
-      </div>
-      <!-- Copyright -->
+    <footer class="text-center text-white p-3">
+      <a
+        href="https://web.dragonball-api.com/"
+        class="text-center"
+        target="_blank"
+        >DRAGON BALL Z ©</a
+      >
     </footer>
     <TheWelcome />
   </main>
@@ -20,7 +17,7 @@
 footer {
   background-color: #373a40;
   border: rgba(0, 0, 0, 0.8) 2px solid;
-  position: absolute;
+  position: relative;
   bottom: 0;
   width: 100%;
   color: white;
