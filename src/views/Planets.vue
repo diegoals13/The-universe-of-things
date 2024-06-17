@@ -1,17 +1,19 @@
 <script setup>
 import Header from '../components/Header.vue'
 import Footer from '../components/Footer.vue'
+import CardPlanet from '../components/CardPlanet.vue'
 </script>
 <template>
 
+<Header></Header>
   <main>
     
-   <Header></Header>
-   <H1>PLANETS</H1>
-   <Footer></Footer>
-    <TheWelcome />
+ <CardPlanet></CardPlanet>
+   
+ 
+  
   </main>
-
+  <Footer></Footer>
 </template>
 
 <style>
