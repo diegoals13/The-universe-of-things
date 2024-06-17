@@ -1,14 +1,11 @@
 <script setup>
-import Header from '../components/Header.vue'
-import Footer from '../components/Footer.vue'
+import PlanetCard from '@/components/PlanetCard.vue'
 </script>
 <template>
 
   <main>
-    
-   <Header></Header>
    <H1>PLANETS</H1>
-   <Footer></Footer>
+   <PlanetCard/>
     <TheWelcome />
   </main>
 
@@ -21,5 +18,10 @@ import Footer from '../components/Footer.vue'
     display: flex;
     align-items: center;
   }
+  
+}
+main{
+  background-color: darkcyan;
 }
 </style>
+
