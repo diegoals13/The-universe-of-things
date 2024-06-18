@@ -4,10 +4,11 @@ import Footer from "../components/Footer.vue";
 import Logo from "@/components/Logo.vue";
 import Filter from "@/components/Filter.vue";
 import CardHome from "@/components/CardHome.vue";
-import { userCharacterStore } from "@/stores/superheroes";
-
-const characterStore = userCharacterStore();
-characterStore.get()
+import prueba from "../components/prueba.vue";
+/*  import { userCharacterStore } from "@/stores/superheroes";  */
+/* 
+ const characterStore = userCharacterStore();
+characterStore.get()  */
 </script>
 
 <template>
@@ -16,7 +17,9 @@ characterStore.get()
     <Logo></Logo>
     <Filter></Filter>
     <CardHome></CardHome>
-    <div v-if="characterStore.isLoading">
+    <prueba></prueba>
+
+   <!--   <div v-if="characterStore.isLoading">
 
       <div>{{ characterStore.character.name}}</div>
 
@@ -24,17 +27,19 @@ characterStore.get()
 
   <li v-for="character in characterStore.character">
 
-   <!--  <img :src="character.images.xs" alt=""> -->
-    {{ character.name }};
+    <img :src="character.images.xs" alt=""> 
+     {{ character.name }}; 
   
     
-  </li>
+   </li>
   
       </ul>
 
 
     </div>
-    <div v-else>Loading</div>
+    <div v-else>Loading</div> -->
+ 
+    
   </main>
   <Footer></Footer>
 </template>

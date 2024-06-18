@@ -11,20 +11,20 @@ export const userCharacterStore = defineStore('character', () => {
     async function get () {
 
         try {
-            isLoading.value = false
+            isLoading.value = true
             const response = await fetch(uri + 'all.json')
             const data = await response.json()
 
             if (response.status == 200) {
                 characters.value = data
-                isLoading.value = true
             }
-
         } catch (error) {
             throw new Error('Error loading api:' + error)
+        } finally {
+            isLoading.value = false
         }
 
     }
 
     return { characters, isLoading, get }
-})
+}) 
