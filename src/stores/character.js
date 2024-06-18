@@ -1,8 +1,10 @@
-import { ref, computed } from "vue";
-import { defineStore } from "pinia";
 
-export const useCharacterStore = defineStore("character", () => {
-  const uri = import.meta.env.VITE_API_ENDPOINT_CHARACTERS;
+
+import { ref } from 'vue'
+import { defineStore } from 'pinia'
+
+export const useCharacterStore = defineStore('character', () => {
+  const uri = 'https://dragonball-api.com/api/character/'; // URL correcta para la API de personajes
 
   const characters = ref([]);
   const isLoading = ref(false);
@@ -10,7 +12,7 @@ export const useCharacterStore = defineStore("character", () => {
   async function get() {
     try {
       isLoading.value = true;
-      const response = await fetch(uri + "all.json");
+      const response = await fetch(uri); // Fetch sin 'all.json' al final
       const data = await response.json();
 
       if (response.status == 200) {
