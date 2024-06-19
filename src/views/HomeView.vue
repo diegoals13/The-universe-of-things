@@ -1,6 +1,5 @@
 <script setup>
-import Header from "../components/Header.vue";
-import Footer from "../components/Footer.vue";
+
 import Logo from "@/components/Logo.vue";
 import Filter from "@/components/Filter.vue";
 import CardHome from "@/components/CardHome.vue";
