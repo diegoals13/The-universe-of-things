@@ -4,6 +4,7 @@ import Footer from "../components/Footer.vue";
 import Logo from "@/components/Logo.vue";
 import Filter from "@/components/Filter.vue";
 import CardHome from "@/components/CardHome.vue";
+import Pagebar from "@/components/Pagebar.vue"
 
 /*  import { userCharacterStore } from "@/stores/superheroes";  */
 /* 
@@ -17,7 +18,7 @@ characterStore.get()  */
     <Logo></Logo>
     <Filter></Filter>
     <CardHome></CardHome>
-    
+    <Pagebar></Pagebar>
 
    <!--   <div v-if="characterStore.isLoading">
 
