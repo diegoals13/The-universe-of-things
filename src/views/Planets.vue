@@ -1,8 +1,12 @@
 <script setup>
+
+
+import Logo from "@/components/Logo.vue";
+import CardPlanet from '../components/CardPlanet.vue'
 </script>
 <template>
 
-<Header></Header>
+
   <main>
   <Logo></Logo>
  <CardPlanet></CardPlanet>
@@ -10,7 +14,7 @@
  
   
   </main>
-  <Footer></Footer>
+  
 </template>
 
 <style>

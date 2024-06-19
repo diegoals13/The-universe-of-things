@@ -12,7 +12,7 @@ characterStore.get()  */
 </script>
 
 <template>
-  <Header></Header>
+  
   <main>
     <Logo></Logo>
     <Filter></Filter>
@@ -41,7 +41,6 @@ characterStore.get()  */
  
     
   </main>
-  <Footer></Footer>
 </template>
 <style lang="scss">
 main {
