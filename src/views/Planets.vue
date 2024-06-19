@@ -1,16 +1,16 @@
 <script setup>
-
 </script>
 <template>
 
+<Header></Header>
   <main>
-    
-   <Header></Header>
-   <H1>PLANETS</H1>
-   <Footer></Footer>
-    <TheWelcome />
+  <Logo></Logo>
+ <CardPlanet></CardPlanet>
+   
+ 
+  
   </main>
-
+  <Footer></Footer>
 </template>
 
 <style>
