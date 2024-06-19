@@ -3,6 +3,7 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
 
+
 export const useCharacterStore = defineStore('character', () => {
   const uri = 'https://dragonball-api.com/api/character/'; // URL correcta para la API de personajes
 
