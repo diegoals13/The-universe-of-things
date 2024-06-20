@@ -1,6 +1,6 @@
 <!-- src/components/Header.vue -->
 <script setup>
-import { RouterLink } from 'vue-router';
+import { RouterLink } from "vue-router";
 </script>
 
 <template>
@@ -8,7 +8,9 @@ import { RouterLink } from 'vue-router';
     <div class="container-fluid justify-content-center">
       <ul class="navbar-nav mt-3 mb-3">
         <li class="nav-item me-5 ms-5">
-          <RouterLink to="/" class="nav-link" aria-current="page">Home</RouterLink>
+          <RouterLink to="/" class="nav-link" aria-current="page"
+            >Home</RouterLink
+          >
         </li>
         <li class="nav-item me-5 ms-5">
           <RouterLink to="/planets" class="nav-link">Planets</RouterLink>

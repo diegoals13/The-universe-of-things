@@ -1,9 +1,8 @@
 <script setup>
-
 import Logo from "@/components/Logo.vue";
 import Filter from "@/components/Filter.vue";
 import CardHome from "@/components/CardHome.vue";
-import Pagebar from "@/components/Pagebar.vue"
+import Pagebar from "@/components/Pagebar.vue";
 
 /*  import { userCharacterStore } from "@/stores/superheroes";  */
 /* 
@@ -12,14 +11,13 @@ characterStore.get()  */
 </script>
 
 <template>
-  
   <main>
     <Logo></Logo>
     <Filter></Filter>
     <CardHome></CardHome>
     <Pagebar></Pagebar>
 
-   <!--   <div v-if="characterStore.isLoading">
+    <!--   <div v-if="characterStore.isLoading">
 
       <div>{{ characterStore.character.name}}</div>
 
@@ -38,8 +36,6 @@ characterStore.get()  */
 
     </div>
     <div v-else>Loading</div> -->
- 
-    
   </main>
 </template>
 <style lang="scss">

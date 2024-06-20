@@ -1,7 +1,12 @@
 <template>
   <div class="row justify-content-center">
-    <div id="cardcontainer" v-for="(character, index) in characters" :key="index" class="row col-2 row-cols-1 row-cols-md-1 g-4">
-      <div class="col ">
+    <div
+      id="cardcontainer"
+      v-for="(character, index) in characters"
+      :key="index"
+      class="row col-2 row-cols-1 row-cols-md-1 g-4"
+    >
+      <div class="col">
         <div class="card h-100" id="cardcontent">
           <div id="contentimg">
             <img :src="character.image" class="card-img-top" alt="..." />
@@ -22,29 +27,68 @@
       </div>
     </div>
   </div>
+
+  <div class="boxesContainer">
+    <div class="cardBox">
+      <div class="card">
+        <div class="front">
+          <!-- contenido front -->
+
+          <!-- contenido front -->
+        </div>
+        <div class="back">
+          <!-- contenido back -->
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script setup>
- import { ref, onMounted } from 'vue';
+import { ref, onMounted } from "vue";
 
 const characters = ref([]);
 
 onMounted(async () => {
-  const apiUrl = 'https://dragonball-api.com/api/characters';
+  const apiUrl = "https://dragonball-api.com/api/characters";
   try {
     const response = await fetch(apiUrl);
     const data = await response.json();
-    characters.value = data.items; 
+    characters.value = data.items;
   } catch (error) {
-    console.error('Error fetching characters:', error);
-  } 
-}); 
+    console.error("Error fetching characters:", error);
+  }
+});
 </script>
 
 <style lang="scss" scoped>
+.cardBack {
+  float: left;
+  font-size: 1.2em;
+  margin: 1% 0 0 1%;
+  perspective: 800px;
+  transition: all 0.3s ease 0s;
+  width: 23.7%;
+}
+
+.cardBack :hover {
+  transform: rotateY(180deg);
+}
+
+.card {
+  background: #222;
+  cursor: pointer;
+  height: 300px;
+  transform-style: preserve-3d;
+  transition: transform 0.4s ease 0s;
+  width: 100%;
+  -webkit-animation: giro 1s 1;
+  animation: giro 1s 1;
+}
+
 img {
   width: 120px;
-  height: 300px;  
+  height: 300px;
   margin: auto;
 }
 #cardcontainer {
@@ -55,11 +99,11 @@ img {
   width: 420px;
 }
 #cardcontent {
-  background-color: rgba(78, 82, 88, 0.0);
+  background-color: rgba(78, 82, 88, 0);
   border: 0;
 }
 .card-title {
-  color: #FFB800;
+  color: #ffb800;
   font-weight: 600;
   font-size: 24px;
 }
@@ -79,6 +123,44 @@ p {
   border-radius: 20px;
 }
 
+.cardBox {
+  float: left;
+  font-size: 1.2em;
+  margin: 1% 0 0 1%;
+  perspective: 800px;
+  transition: all 0.3s ease 0s;
+  width: 23.7%;
+}
+.cardBox:hover .card {
+  transform: rotateY(180deg);
+}
+.card {
+  background: #222;
+  cursor: default;
+  height: 300px;
+  transform-style: preserve-3d;
+  transition: transform 0.4s ease 0s;
+  width: 100%;
+  -webkit-animation: giro 1s 1;
+  animation: giro 1s 1;
+}
+.front,
+.back {
+  backface-visibility: hidden;
+  box-sizing: border-box;
+  color: white;
+  display: block;
+  font-size: 1.2em;
+  height: 100%;
+  padding: 0.8em;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+}
+.back {
+  transform: rotateY(180deg);
+}
+
 @media only screen and (max-width: 450px) {
   #cardcontainer {
     width: 180px;
@@ -86,11 +168,11 @@ p {
   }
   img {
     width: 80px;
-    height: 180px;  
+    height: 180px;
     margin: auto;
   }
- .card-title {
-    color: #FFB800;
+  .card-title {
+    color: #ffb800;
   }
   p {
     color: white;

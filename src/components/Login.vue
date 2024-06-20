@@ -1,4 +1,3 @@
-
 <!-- src/components/Login.vue -->
 <template>
   <div class="login">
@@ -19,28 +18,28 @@
 </template>
 
 <script>
-import { ref } from 'vue';
-import { useAuthStore } from '@/stores/auth';
+import { ref } from "vue";
+import { useAuthStore } from "@/stores/auth";
 
 export default {
-  name: 'Login',
+  name: "Login",
   setup() {
-    const username = ref('');
-    const password = ref('');
-    const error = ref('');
+    const username = ref("");
+    const password = ref("");
+    const error = ref("");
 
     const authStore = useAuthStore();
 
     const handleLogin = () => {
       if (!authStore.login(username.value, password.value)) {
-        error.value = 'Invalid username or password';
+        error.value = "Invalid username or password";
       } else {
-        error.value = '';
+        error.value = "";
       }
     };
 
     return { username, password, error, handleLogin };
-  }
+  },
 };
 </script>
 

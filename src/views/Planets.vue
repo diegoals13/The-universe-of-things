@@ -1,20 +1,14 @@
 <script setup>
-
-
 import Logo from "@/components/Logo.vue";
-import CardPlanet from '../components/CardPlanet.vue'
+import CardPlanet from "../components/CardPlanet.vue";
+import Pagebar from "@/components/Pagebar.vue";
 </script>
 <template>
-
-
   <main>
-  <Logo></Logo>
- <CardPlanet></CardPlanet>
-   
- 
-  
+    <Logo></Logo>
+    <CardPlanet></CardPlanet>
+    <Pagebar></Pagebar>
   </main>
-  
 </template>
 
 <style>
