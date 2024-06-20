@@ -16,6 +16,9 @@ import { RouterLink } from 'vue-router';
         <li class="nav-item me-5 ms-5">
           <RouterLink to="/login" class="nav-link">Login</RouterLink>
         </li>
+        <li class="nav-item me-5 ms-5">
+          <RouterLink to="/register" class="nav-link">Register</RouterLink>
+        </li>
       </ul>
     </div>
   </nav>
