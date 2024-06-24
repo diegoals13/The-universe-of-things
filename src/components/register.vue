@@ -1,45 +1,73 @@
 <script setup>
-import { ref } from 'vue';
-import { useRouter } from 'vue-router';
-import { useAuthStore } from '../stores/auth';
+import { useAuthStore } from "../stores/authStore";
+import { ref } from "vue";
+import { useRouter } from "vue-router";
 
-const router = useRouter();
-const authStore = useAuthStore();
-const username = ref('');
-const password = ref('');
-const errorMessage = ref('');
+export default {
+  setup() {
+    const authStore = useAuthStore();
+    const username = ref("");
+    const password = ref("");
+    const error = ref("");
+    const router = useRouter();
 
-const handleSubmit = async () => {
-  try {
-    await authStore.login(username.value, password.value);
-    router.push('/');
-  } catch (error) {
-    errorMessage.value = error.message;
-  }
+    const register = () => {
+      try {
+        authStore.register(username.value, password.value);
+        error.value = "User registered successfully";
+        router.push("/login"); // Redirigir al usuario a la página de login
+      } catch (err) {
+        error.value = err.message;
+      }
+    };
+
+    return {
+      username,
+      password,
+      error,
+      register,
+    };
+  },
 };
-</script>-- src/views/LoginView.vue -->
+</script>
 <template>
   <main>
     <div class="login">
       <!-- <h2>register</h2> -->
       <form @submit.prevent="handleSubmit">
         <div>
-          <input v-model="username" type="text" id="username" placeholder="Enter new username" required />
+          <input
+            v-model="username"
+            type="text"
+            id="username"
+            placeholder="Enter new username"
+            required
+          />
         </div>
         <div>
-          <input v-model="password" type="password" id="password" placeholder="password" />
+          <input
+            v-model="password"
+            type="password"
+            id="password"
+            placeholder="password"
+          />
         </div>
         <div>
-          <input v-model="password" type="password" id="password" placeholder="confirm password " />
+          <input
+            v-model="password"
+            type="password"
+            id="password"
+            placeholder="confirm password "
+          />
         </div>
-        <button type="submit" @click="showError" class="login-btn">Login</button>
+        <button type="submit" @click="showError" class="login-btn">
+          Login
+        </button>
         <p v-if="errorMessage" class="error">{{ errorMessage }}</p>
       </form>
     </div>
   </main>
 </template>
-
-
 
 <style scoped>
 main {
@@ -52,7 +80,6 @@ main {
   justify-content: center;
   align-items: center;
   height: 100vh;
-
 }
 
 /* Estilos para el login */
@@ -92,7 +119,6 @@ form {
   color: black;
   font-weight: 700;
 }
-
 
 .login-btn {
   padding: 10px 25px;
