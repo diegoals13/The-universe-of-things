@@ -28,20 +28,9 @@
     </div>
   </div>
 
-  <div class="boxesContainer">
-    <div class="cardBox">
-      <div class="card">
-        <div class="front">
-          <!-- contenido front -->
-
-          <!-- contenido front -->
-        </div>
-        <div class="back">
-          <!-- contenido back -->
-        </div>
-      </div>
-    </div>
-  </div>
+  
+  
+  
 </template>
 
 <script setup>
@@ -92,11 +81,17 @@ img {
   margin: auto;
 }
 #cardcontainer {
+  
   background-color: rgba(78, 82, 88, 0.7);
   border: 3px solid rgba(0, 0, 0, 0.7);
   border-radius: 16px;
   margin: 20px;
   width: 420px;
+
+  transform-style: preserve-3d;
+  transition: transform 0.4s ease 0s;
+  -webkit-animation: giro 1s 1;
+  animation: giro 1s 1;
 }
 #cardcontent {
   background-color: rgba(78, 82, 88, 0);
@@ -130,36 +125,10 @@ p {
   perspective: 800px;
   transition: all 0.3s ease 0s;
   width: 23.7%;
+  
+ 
 }
-.cardBox:hover .card {
-  transform: rotateY(180deg);
-}
-.card {
-  background: #222;
-  cursor: default;
-  height: 300px;
-  transform-style: preserve-3d;
-  transition: transform 0.4s ease 0s;
-  width: 100%;
-  -webkit-animation: giro 1s 1;
-  animation: giro 1s 1;
-}
-.front,
-.back {
-  backface-visibility: hidden;
-  box-sizing: border-box;
-  color: white;
-  display: block;
-  font-size: 1.2em;
-  height: 100%;
-  padding: 0.8em;
-  position: absolute;
-  text-align: center;
-  width: 100%;
-}
-.back {
-  transform: rotateY(180deg);
-}
+
 
 @media only screen and (max-width: 450px) {
   #cardcontainer {
