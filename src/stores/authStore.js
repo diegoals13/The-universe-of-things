@@ -1,6 +1,6 @@
-import { defineStore } from 'pinia';
+import { defineStore } from "pinia";
 
-export const useAuthStore = defineStore('auth', {
+export const useAuthStore = defineStore("auth", {
   state: () => ({
     users: [], // Lista de usuarios registrados
     user: null,
@@ -8,24 +8,26 @@ export const useAuthStore = defineStore('auth', {
   }),
   actions: {
     register(username, password) {
-      const userExists = this.users.some(user => user.username === username);
+      // Verifica si el usuario ya está registrado
+      const userExists = this.users.some((user) => user.username === username);
       if (userExists) {
-        throw new Error('User already exists');
+        throw new Error("User already exists");
       }
 
       // Agrega el nuevo usuario a la lista
       this.users.push({ username, password });
     },
-    login(username, password) {
+    async login(username, password) {
+      // Verifica las credenciales contra los usuarios registrados
       const user = this.users.find(
-        user => user.username === username && user.password === password
+        (user) => user.username === username && user.password === password
       );
 
       if (user) {
         this.user = { username };
-        this.token = 'example-token';
+        this.token = "example-token";
       } else {
-        throw new Error('Invalid credentials');
+        throw new Error("Invalid credentials");
       }
     },
     logout() {
@@ -34,9 +36,6 @@ export const useAuthStore = defineStore('auth', {
     },
   },
   getters: {
-    isAuthenticated: state => !!state.user,
-  },
-  persist: {
-    storage: window.localStorage,
+    isAuthenticated: (state) => !!state.user,
   },
 });
