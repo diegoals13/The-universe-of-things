@@ -21,7 +21,7 @@ const handleSubmit = async () => {
 <template>
   <main>
     <div class="login">
-      <!-- <h2>register</h2> -->
+      <!-- <h2>Login</h2> -->
       <form @submit.prevent="handleSubmit">
         <div>
           <input v-model="username" type="text" id="username" placeholder="Enter new username" required />
@@ -29,10 +29,8 @@ const handleSubmit = async () => {
         <div>
           <input v-model="password" type="password" id="password" placeholder="password" />
         </div>
-        <div>
-          <input v-model="password" type="password" id="password" placeholder="confirm password " />
-        </div>
-        <button type="submit" @click="showError" class="login-btn">Login</button>
+        
+        <button type="submit" @click="showError" class="login-btn">Register</button>
         <p v-if="errorMessage" class="error">{{ errorMessage }}</p>
       </form>
     </div>
