@@ -7,15 +7,15 @@ import { RouterLink } from "vue-router";
   <nav class="navbar navbar-expand">
     <div class="container-fluid justify-content-center">
       <ul class="navbar-nav mt-3 mb-3">
-        <li class="nav-item me-5 ms-5">
+        <li class="nav-item">
           <RouterLink to="/" class="nav-link" aria-current="page"
             >Home</RouterLink
           >
         </li>
-        <li class="nav-item me-5 ms-5">
+        <li class="nav-item">
           <RouterLink to="/planets" class="nav-link">Planets</RouterLink>
         </li>
-        <li class="nav-item me-5 ms-5">
+        <li class="nav-item">
           <RouterLink to="/login" class="nav-link">Login</RouterLink>
         </li>
       </ul>
@@ -44,6 +44,17 @@ import { RouterLink } from "vue-router";
     &.activated {
       color: #ffb800;
     }
+  }
+  .nav-item {
+    margin: 0 48px;
+  }
+}
+@media only screen and (max-width: 450px) {
+  .nav-link {
+    font-size: 14px;
+  }
+  .nav-item {
+    margin: 0 14px !important;
   }
 }
 </style>
