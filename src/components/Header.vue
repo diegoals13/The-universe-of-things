@@ -15,7 +15,10 @@ import { RouterLink } from "vue-router";
         <li class="nav-item">
           <RouterLink to="/planets" class="nav-link">Planets</RouterLink>
         </li>
-        <li class="nav-item">
+        <li class="nav-item me-5 ms-5">
+          <RouterLink to="/register" class="nav-link">Register</RouterLink>
+        </li>
+        <li class="nav-item me-5 ms-5">
           <RouterLink to="/login" class="nav-link">Login</RouterLink>
         </li>
       </ul>
