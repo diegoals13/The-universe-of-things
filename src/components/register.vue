@@ -1,25 +1,25 @@
 <script setup>
-import { useAuthStore } from "../stores/authStore"; // Asegúrate de que la ruta sea correcta
-import { ref } from "vue";
-import { useRouter } from "vue-router";
+import { useAuthStore } from '../stores/authStore'; // Asegúrate de que la ruta sea correcta
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
 
 const authStore = useAuthStore();
-const username = ref("");
-const password = ref("");
-const confirmPassword = ref("");
-const error = ref("");
+const username = ref('');
+const password = ref('');
+const confirmPassword = ref('');
+const error = ref('');
 const router = useRouter();
 
 const handleSubmit = async () => {
   if (password.value !== confirmPassword.value) {
-    error.value = "Passwords do not match";
+    error.value = 'Passwords do not match';
     return;
   }
 
   try {
-    await authStore.register(username.value, password.value);
-    error.value = "User registered successfully";
-    router.push("/login"); // Redirigir al usuario a la página de login
+    authStore.register(username.value, password.value);
+    error.value = 'User registered successfully';
+    router.push('/login'); // Redirigir al usuario a la página de login
   } catch (err) {
     error.value = err.message;
   }
