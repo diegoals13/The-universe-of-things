@@ -109,7 +109,7 @@ p {
 }
 .card-body {
   padding: 10px;
-  margin-left: 30px;
+  text-align: center;
 }
 #contentimg {
   margin: auto;
@@ -132,21 +132,34 @@ p {
 
 @media only screen and (max-width: 450px) {
   #cardcontainer {
-    width: 180px;
+    width: 150px;
     height: auto;
   }
   img {
-    width: 80px;
-    height: 180px;
+    width: 60px;
+    height: 150px;
     margin: auto;
   }
   .card-title {
     color: #ffb800;
+    font-size: 12px;
+    margin-bottom: 5px;
   }
   p {
     color: white;
-    font-weight: 600;
-    font-size: 24px;
+    font-size: 12px;
+  }
+  #contentimg {
+  margin: auto;
+  padding: 5px 20px;
+  border-radius: 20px;
+  }
+  .card-body {
+    padding: 5px;
+    text-align: center;
+  }
+  .col {
+    margin-top: 12px;
   }
 }
 </style>
