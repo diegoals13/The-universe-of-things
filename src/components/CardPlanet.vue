@@ -1,28 +1,35 @@
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, computed, watch, onBeforeMount } from "vue";
+import { usePageStore } from "@/stores/usePageStore";
 
 const planets = ref([]);
+const pageStore = usePageStore();
+const currentPage = computed(() => pageStore.currentPage)
 
-onMounted(async () => {
-  const apiUrl = "https://dragonball-api.com/api/planets";
+const fetchCharacters = async (page) => {
   try {
+    const apiUrl = `https://dragonball-api.com/api/planets?page=${currentPage.value}`;
     const response = await fetch(apiUrl);
     const data = await response.json();
     planets.value = data.items;
   } catch (error) {
     console.error("Error fetching planets:", error);
   }
-});
+};
+
+onMounted(() => {
+  fetchCharacters(currentPage.value);
+})
+
+watch(currentPage, (newPage) => {
+  fetchCharacters(newPage);
+})
 </script>
 
 <template>
   <div class="row justify-content-center">
-    <div
-      id="cardcontainer"
-      v-for="(planets, index) in planets"
-      :key="index"
-      class="row col-2 row-cols-1 row-cols-md-1 g-4"
-    >
+    <div id="cardcontainer" v-for="(planets, index) in planets" :key="index"
+      class="row col-2 row-cols-1 row-cols-md-1 g-4">
       <div class="col">
         <div class="card h-100" id="cardcontent">
           <div id="contentimg">
@@ -36,7 +43,7 @@ onMounted(async () => {
             <h5 class="card-title">destroyed</h5>
             <p class="card-text">{{ planets.isDestroyed }}</p>
           </div>
-          
+
         </div>
       </div>
     </div>
@@ -53,6 +60,7 @@ img {
   justify-content: center;
   border: 8px solid rgba(55, 58, 64, 0.75);
 }
+
 #cardcontainer {
   background-color: rgba(78, 82, 88, 0.7);
   border: 3px solid rgba(0, 0, 0, 0.7);
@@ -60,35 +68,40 @@ img {
   margin: 20px;
   width: 420px;
 }
+
 #cardcontent {
   background-color: rgba(78, 82, 88, 0);
   border: 0;
 }
+
 .card-title {
   color: #ffb800;
   font-weight: 600;
   font-size: 24px;
 }
+
 p {
   color: white;
   font-weight: 600;
   font-size: 24px;
 }
+
 .card-body {
   padding: 10px;
   margin-left: 30px;
 }
+
 #contentimg {
   // background-color: rgba(255, 255, 255, 0.5);
   padding: 5px 100px;
   border-radius: 20px;
-  display:flex;
+  display: flex;
   justify-content: center;
   margin: 0 auto;
   width: 320px;
   height: 310px;
 
-  
+
 }
 
 @media only screen and (max-width: 450px) {
@@ -96,14 +109,17 @@ p {
     width: 180px;
     height: auto;
   }
+
   img {
     width: 80px;
     height: 180px;
     margin: auto;
   }
+
   .card-title {
     color: #ffb800;
   }
+
   p {
     color: white;
     font-weight: 600;
