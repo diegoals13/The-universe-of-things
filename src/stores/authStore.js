@@ -37,5 +37,13 @@ export const useAuthStore = defineStore("auth", {
   getters: {
     isAuthenticated: (state) => !!state.user,
   },
-  persist: true, // Habilitar persistencia para este store
+  persist: {
+    enabled: true,
+    strategies: [
+      {
+        key: "auth", // Clave para almacenar el estado en localStorage
+        storage: localStorage, // Utilizar localStorage para persistencia
+      },
+    ],
+  },
 });
