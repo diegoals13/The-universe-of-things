@@ -21,6 +21,9 @@ import { RouterLink } from "vue-router";
         <li class="nav-item me-5 ms-5">
           <RouterLink to="/login" class="nav-link">Login</RouterLink>
         </li>
+        <li class="nav-item me-5 ms-5">
+          <RouterLink to="/favorites" class="nav-link">Favorites</RouterLink>
+        </li>
       </ul>
     </div>
   </nav>
