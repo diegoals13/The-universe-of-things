@@ -35,11 +35,7 @@ import { usePageStore } from "@/stores/usePageStore";
 const characters = ref([]);
 const pageStore = usePageStore();
 const currentPage = computed(() => pageStore.currentPage)
-// const changePage = (newPage) => {
-//   apiUrl = `https://dragonball-api.com/api/characters?page=${newPage}&limit=9`
-// }
-// watch(() => pageStore.currentPage,
-//   (newPage) => { changePage(newPage) })
+
 const fetchCharacters = async (page) => {
   try {
     const apiUrl = `https://dragonball-api.com/api/characters?page=${currentPage.value}&limit=8`;

@@ -11,10 +11,12 @@
   justify-content: center;
   align-items: center;
 }
+
 img {
   max-width: 500px;
   max-height: 200px;
 }
+
 @media only screen and (max-width: 450px) {
   img {
     max-width: 200px;
