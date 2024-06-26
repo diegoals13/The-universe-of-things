@@ -3,7 +3,7 @@ import Logo from "@/components/Logo.vue";
 import Filter from "@/components/Filter.vue";
 import CardHome from "@/components/CardHome.vue";
 import Pagebar from "@/components/Pagebar.vue";
-
+import ButtonScroll from "@/components/ButtonScroll.vue";
 
 </script>
 
@@ -12,7 +12,9 @@ import Pagebar from "@/components/Pagebar.vue";
     <Logo></Logo>
     <Filter></Filter>
     <CardHome></CardHome>
+    <ButtonScroll></ButtonScroll>
     <Pagebar></Pagebar>
+
 
   </main>
 </template>
