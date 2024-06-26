@@ -52,12 +52,8 @@ watch(currentPage, (newPage) => {
 
 <style lang="scss" scoped>
 img {
-  max-width: 325px;
-  max-height: 290px;
-  min-width: 325px;
-  min-height: 290px;
-  margin: auto;
-  justify-content: center;
+  width: 325px;
+  height: 290px;
   border: 8px solid rgba(55, 58, 64, 0.75);
 }
 
@@ -88,42 +84,44 @@ p {
 
 .card-body {
   padding: 10px;
-  margin-left: 30px;
+  text-align: center;
 }
 
 #contentimg {
-  // background-color: rgba(255, 255, 255, 0.5);
-  padding: 5px 100px;
-  border-radius: 20px;
   display: flex;
   justify-content: center;
-  margin: 0 auto;
-  width: 320px;
-  height: 310px;
-
-
 }
 
 @media only screen and (max-width: 450px) {
   #cardcontainer {
-    width: 180px;
+    width: 150px;
     height: auto;
   }
 
   img {
-    width: 80px;
-    height: 180px;
-    margin: auto;
+    width: 100px;
+    height: 80px;
+    border: 4px solid rgba(55, 58, 64, 0.75);
   }
 
   .card-title {
     color: #ffb800;
+    font-size: 12px;
+    margin-bottom: 5px;
   }
 
   p {
     color: white;
-    font-weight: 600;
-    font-size: 24px;
+    font-size: 12px;
+  }
+
+  .card-body {
+    padding: 5px;
+    text-align: center;
+  }
+
+  .col {
+    margin-top: 12px;
   }
 }
 </style>

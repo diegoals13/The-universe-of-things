@@ -164,11 +164,13 @@ p {
     color: white;
     font-size: 12px;
   }
+
   #contentimg {
   margin: auto;
   padding: 5px 20px;
   border-radius: 20px;
   }
+  
   .card-body {
     padding: 5px;
     text-align: center;
