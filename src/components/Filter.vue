@@ -29,4 +29,18 @@ div {
     }
   }
 }
+
+@media only screen and (max-width: 450px) {
+  button {
+    width: 100px !important;
+    height: 30px !important;
+    margin-right: 20px !important;
+  }
+
+  img {
+    width: 40px !important;
+    height: 25px !important;
+    margin-left: 50px !important;
+  }
+}
 </style>
