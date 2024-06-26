@@ -15,13 +15,13 @@ import { RouterLink } from "vue-router";
         <li class="nav-item">
           <RouterLink to="/planets" class="nav-link">Planets</RouterLink>
         </li>
-        <li class="nav-item me-5 ms-5">
+        <li class="nav-item">
           <RouterLink to="/register" class="nav-link">Register</RouterLink>
         </li>
-        <li class="nav-item me-5 ms-5">
+        <li class="nav-item">
           <RouterLink to="/login" class="nav-link">Login</RouterLink>
         </li>
-        <li class="nav-item me-5 ms-5">
+        <li class="nav-item">
           <RouterLink to="/favorites" class="nav-link">Favorites</RouterLink>
         </li>
       </ul>
@@ -42,6 +42,7 @@ import { RouterLink } from "vue-router";
       1px -1px 0 #000, 1px 0 0 #000, -1px 0 0 #000, 0 1px 0 #000, 0 -1px 0 #000;
     font-size: 20px;
     font-weight: bold;
+    
 
     &:hover {
       color: #ffb800;
@@ -52,15 +53,16 @@ import { RouterLink } from "vue-router";
     }
   }
   .nav-item {
-    margin: 0 48px;
+    padding: 0 32px;
   }
 }
 @media only screen and (max-width: 450px) {
-  .nav-link {
-    font-size: 14px;
-  }
   .nav-item {
-    margin: 0 14px !important;
+    padding: 0 6px !important;
+  }
+
+  .nav-link {
+    font-size: 12px !important;
   }
 }
 </style>
