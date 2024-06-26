@@ -42,4 +42,10 @@ function changePage(number) {
     color: #ffb800;
   }
 }
+@media only screen and (max-width: 450px) {
+  .pagebar {
+  width: 20%;
+  height: 50px;
+  }
+}
 </style>

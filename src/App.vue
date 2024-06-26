@@ -15,5 +15,5 @@ import { RouterLink, RouterView } from "vue-router";
 
 
 <style>
-/* Estilos globales */
+
 </style>

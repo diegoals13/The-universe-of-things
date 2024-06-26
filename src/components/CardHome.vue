@@ -1,40 +1,52 @@
 <template>
   <div class="row justify-content-center">
-    <div id="cardcontainer" v-for="(character, index) in characters" :key="index"
+    <div class="col-12 mb-3" id="contprincipal">
+      <div class="input-group mb-3" id="containersearch">
+        <input v-model="filterName" type="text" id="search"  class="form-control" placeholder="Filter by Name">
+      </div>
+      <div class="input-group mb-3" id="containersearch">
+        <input v-model="filterRace" type="text" id="search"  class="form-control" placeholder="Filter by Race">
+      </div>
+     
+    </div>
+    <div id="cardcontainer" v-for="(character, index) in filteredCharacters" :key="index"
       class="row col-2 row-cols-1 row-cols-md-1 g-4">
       <div class="col">
         <div class="card h-100" id="cardcontent">
           <div id="contentimg">
-            <img :src="character.image" class="card-img-top" alt="..." />
+            <img :src="character.image" class="card-img-top" alt="Imagen del personaje" />
           </div>
           <div class="card-body">
-            <h5 class="card-title">Name</h5>
+            <h5 class="card-title">Nombre</h5>
             <p class="card-text">{{ character.name }}</p>
           </div>
           <div class="card-body">
-            <h5 class="card-title">Race</h5>
+            <h5 class="card-title">Raza</h5>
             <p class="card-text">{{ character.race }}</p>
           </div>
           <div class="card-body">
-            <h5 class="card-title">Max Ki</h5>
+            <h5 class="card-title">Máximo Ki</h5>
             <p class="card-text">{{ character.maxKi }}</p>
           </div>
         </div>
       </div>
     </div>
   </div>
-
-
-
 </template>
 
+
+
 <script setup>
-import { ref, onMounted, computed, watch, onBeforeMount } from "vue";
+import { ref, onMounted, computed, watch } from "vue";
 import { usePageStore } from "@/stores/usePageStore";
 
 const characters = ref([]);
+const filterName = ref("");
+const filterRace = ref("");
+const filteredCharacters = ref([]);
+
 const pageStore = usePageStore();
-const currentPage = computed(() => pageStore.currentPage)
+const currentPage = computed(() => pageStore.currentPage);
 
 const fetchCharacters = async (page) => {
   try {
@@ -42,19 +54,42 @@ const fetchCharacters = async (page) => {
     const response = await fetch(apiUrl);
     const data = await response.json();
     characters.value = data.items;
+    applyFilter();
   } catch (error) {
-    console.error("Error fetching characters:", error);
+    console.error("Error al obtener los personajes:", error);
   }
+};
+
+const applyFilter = () => {
+  filteredCharacters.value = characters.value.filter(character => {
+    const nameMatch = filterName.value ? character.name.toLowerCase().includes(filterName.value.toLowerCase()) : true;
+    const raceMatch = filterRace.value ? character.race.toLowerCase().includes(filterRace.value.toLowerCase()) : true;
+    return nameMatch && raceMatch;
+  });
 };
 
 onMounted(() => {
   fetchCharacters(currentPage.value);
-})
+});
 
 watch(currentPage, (newPage) => {
   fetchCharacters(newPage);
-})
+});
+
+watch(characters, () => {
+  applyFilter();
+});
+
+watch(filterName, () => {
+  applyFilter();
+});
+
+watch(filterRace, () => {
+  applyFilter();
+});
 </script>
+
+
 
 <style lang="scss" scoped>
 .cardBack {
@@ -68,6 +103,30 @@ watch(currentPage, (newPage) => {
 
 .cardBack :hover {
   transform: rotateY(180deg);
+}
+
+#containersearch{
+  border-radius: 12px !important;
+    width: 150px !important;
+    height: 40px !important;
+    margin-right: 100px !important;
+    
+}
+#search{
+  background-color: rgba(217, 217, 217, 0.75) !important;
+    border-color: #373a40 !important;
+    border-radius: 12px !important;
+}
+#contprincipal{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+ 
+  width: 100%;
+  
+  
+  
+  
 }
 
 .card {
@@ -178,5 +237,18 @@ p {
   .col {
     margin-top: 12px;
   }
+  #containersearch{
+  border-radius: 12px !important;
+    width: 100px !important;
+    height: 30px !important;
+    margin-right:20px !important;
+    
 }
+#search{
+  width: 100px !important;
+  height: 30px !important;
+}
+
+}
+
 </style>
