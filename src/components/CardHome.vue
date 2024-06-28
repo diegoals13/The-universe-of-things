@@ -2,19 +2,43 @@
   <div class="row justify-content-center">
     <div class="col-12 mb-3" id="contprincipal">
       <div class="input-group mb-3" id="containersearch">
-        <input v-model="filterName" type="text" id="search"  class="form-control" placeholder="Filter by Name">
+        <input
+          v-model="filterName"
+          type="text"
+          id="search"
+          class="form-control"
+          placeholder="Filter by Name"
+        />
       </div>
       <div class="input-group mb-3" id="containersearch">
-        <input v-model="filterRace" type="text" id="search"  class="form-control" placeholder="Filter by Race">
+        <input
+          v-model="filterRace"
+          type="text"
+          id="search"
+          class="form-control"
+          placeholder="Filter by Race"
+        />
       </div>
-     
     </div>
-    <div id="cardcontainer" v-for="(character, index) in filteredCharacters" :key="index"
-      class="row col-2 row-cols-1 row-cols-md-1 g-4">
+    <div
+      id="cardcontainer"
+      v-for="(character, index) in filteredCharacters"
+      :key="index"
+      class="row col-2 row-cols-1 row-cols-md-1 g-4"
+    >
       <div class="col">
+        <div id="butonbox">
+          <button id="favorites" @click="addToFavorites(character)">
+            <img src="../assets/img/star.svg" id="star" alt="" />
+          </button>
+        </div>
         <div class="card h-100" id="cardcontent">
           <div id="contentimg">
-            <img :src="character.image" class="card-img-top" alt="Imagen del personaje" />
+            <img
+              :src="character.image"
+              class="card-img-top"
+              alt="Imagen del personaje"
+            />
           </div>
           <div class="card-body">
             <h5 class="card-title">Nombre</h5>
@@ -34,11 +58,11 @@
   </div>
 </template>
 
-
-
 <script setup>
+// script setup
 import { ref, onMounted, computed, watch } from "vue";
 import { usePageStore } from "@/stores/usePageStore";
+import { useFavoritesStore } from "@/stores/useFavoritesStore";
 
 const characters = ref([]);
 const filterName = ref("");
@@ -47,6 +71,8 @@ const filteredCharacters = ref([]);
 
 const pageStore = usePageStore();
 const currentPage = computed(() => pageStore.currentPage);
+
+const favoritesStore = useFavoritesStore();
 
 const fetchCharacters = async (page) => {
   try {
@@ -61,11 +87,19 @@ const fetchCharacters = async (page) => {
 };
 
 const applyFilter = () => {
-  filteredCharacters.value = characters.value.filter(character => {
-    const nameMatch = filterName.value ? character.name.toLowerCase().includes(filterName.value.toLowerCase()) : true;
-    const raceMatch = filterRace.value ? character.race.toLowerCase().includes(filterRace.value.toLowerCase()) : true;
+  filteredCharacters.value = characters.value.filter((character) => {
+    const nameMatch = filterName.value
+      ? character.name.toLowerCase().includes(filterName.value.toLowerCase())
+      : true;
+    const raceMatch = filterRace.value
+      ? character.race.toLowerCase().includes(filterRace.value.toLowerCase())
+      : true;
     return nameMatch && raceMatch;
   });
+};
+
+const addToFavorites = (character) => {
+  favoritesStore.addFavorite(character);
 };
 
 onMounted(() => {
@@ -89,8 +123,6 @@ watch(filterRace, () => {
 });
 </script>
 
-
-
 <style lang="scss" scoped>
 .cardBack {
   float: left;
@@ -105,28 +137,23 @@ watch(filterRace, () => {
   transform: rotateY(180deg);
 }
 
-#containersearch{
+#containersearch {
   border-radius: 12px !important;
-    width: 150px !important;
-    height: 40px !important;
-    margin-right: 100px !important;
-    
+  width: 150px !important;
+  height: 40px !important;
+  margin-right: 100px !important;
 }
-#search{
+#search {
   background-color: rgba(217, 217, 217, 0.75) !important;
-    border-color: #373a40 !important;
-    border-radius: 12px !important;
+  border-color: #373a40 !important;
+  border-radius: 12px !important;
 }
-#contprincipal{
+#contprincipal {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
- 
+
   width: 100%;
-  
-  
-  
-  
 }
 
 .card {
@@ -147,13 +174,12 @@ img {
 }
 
 #cardcontainer {
-
   background-color: rgba(78, 82, 88, 0.7);
   border: 3px solid rgba(0, 0, 0, 0.7);
   border-radius: 16px;
   margin: 20px;
   width: 420px;
-
+  height: 650px;
   transform-style: preserve-3d;
   transition: transform 0.4s ease 0s;
   -webkit-animation: giro 1s 1;
@@ -178,7 +204,7 @@ p {
 }
 
 .card-body {
-  padding: 10px;
+  padding: 0;
   text-align: center;
 }
 
@@ -196,10 +222,21 @@ p {
   perspective: 800px;
   transition: all 0.3s ease 0s;
   width: 23.7%;
-
-
 }
-
+#butonbox {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  #favorites {
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+    #star {
+      width: 30px;
+      height: 30px;
+      margin: 0;
+    }
+  }
+}
 
 @media only screen and (max-width: 450px) {
   #cardcontainer {
@@ -225,11 +262,11 @@ p {
   }
 
   #contentimg {
-  margin: auto;
-  padding: 5px 20px;
-  border-radius: 20px;
+    margin: auto;
+    padding: 5px 20px;
+    border-radius: 20px;
   }
-  
+
   .card-body {
     padding: 5px;
     text-align: center;
@@ -237,18 +274,15 @@ p {
   .col {
     margin-top: 12px;
   }
-  #containersearch{
-  border-radius: 12px !important;
+  #containersearch {
+    border-radius: 12px !important;
     width: 100px !important;
     height: 30px !important;
-    margin-right:20px !important;
-    
+    margin-right: 20px !important;
+  }
+  #search {
+    width: 100px !important;
+    height: 30px !important;
+  }
 }
-#search{
-  width: 100px !important;
-  height: 30px !important;
-}
-
-}
-
 </style>
