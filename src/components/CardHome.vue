@@ -241,7 +241,7 @@ p {
 @media only screen and (max-width: 450px) {
   #cardcontainer {
     width: 150px;
-    height: auto;
+    height: 370px;
   }
 
   img {
@@ -268,11 +268,11 @@ p {
   }
 
   .card-body {
-    padding: 5px;
+    padding: 0;
     text-align: center;
   }
   .col {
-    margin-top: 12px;
+    margin-top: 0;
   }
   #containersearch {
     border-radius: 12px !important;
@@ -284,5 +284,14 @@ p {
     width: 100px !important;
     height: 30px !important;
   }
+  #butonbox {
+  #favorites {
+    padding: 0;
+    #star {
+      width: 15px;
+      height: 15px;
+    }
+  }
+}
 }
 </style>

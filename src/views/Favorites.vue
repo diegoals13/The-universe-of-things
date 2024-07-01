@@ -8,6 +8,11 @@
         class="row col-2 row-cols-1 row-cols-md-1 g-4"
       >
         <div class="col">
+          <div id="butonbox">
+          <button id="favorites" @click="removeFromFavorites(character)">
+            <img src="../assets/img/trash3-fill.svg" id="bin" alt="" />
+          </button>
+          </div>
           <div class="card h-100" id="cardcontent">
             <div id="contentimg">
               <img
@@ -27,9 +32,6 @@
             <div class="card-body">
               <h5 class="card-title">Máximo Ki</h5>
               <p class="card-text">{{ character.maxKi }}</p>
-              <button @click="removeFromFavorites(character)">
-                Eliminar de Favoritos
-              </button>
             </div>
           </div>
         </div>
@@ -165,7 +167,7 @@ p {
   #favorites {
     background-color: rgba(255, 255, 255, 0);
     border: none;
-    #star {
+    #bin {
       width: 30px;
       height: 30px;
       margin: 0;
@@ -176,7 +178,7 @@ p {
 @media only screen and (max-width: 450px) {
   #cardcontainer {
     width: 150px;
-    height: auto;
+    height: 370px;
   }
 
   img {
@@ -219,5 +221,14 @@ p {
     width: 100px !important;
     height: 30px !important;
   }
+  #butonbox {
+  #favorites {
+    padding: 0;
+    #bin {
+      width: 15px;
+      height: 15px;
+    }
+  }
+}
 }
 </style>
