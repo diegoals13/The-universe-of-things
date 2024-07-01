@@ -45,6 +45,12 @@ Por último, en la quinta página, tenemos acceso a los personajes que hemos gua
 <b>Enlace a API:</b>
 [API](https://web.dragonball-api.com/)
 
+<b>Enlace a Presentación:</b>
+[CANVA](https://www.canva.com/design/DAGJtJrWNlE/VocQkXweXYsVI1fBCQx5MQ/view?utm_content=DAGJtJrWNlE&utm_campaign=designshare&utm_medium=link&utm_source=editor)
+
+<b>Enlace a Confluence:</b>
+[CANVA](https://aitorgarcia.atlassian.net/wiki/spaces/~7120207d9ee0846c6145ac8da05bb0061a012f/pages/edit-v2/98524?)
+
 <b>Enlace a UserFlow:</b>
 [UserFLow](https://www.figma.com/board/v7pCkOA3MSuFp0XqAHchF2/Untitled?node-id=0-1&t=3AuYoIib0z0CqEDE-0)
 
