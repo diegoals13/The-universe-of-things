@@ -44,8 +44,11 @@ function changePage(number) {
 }
 @media only screen and (max-width: 450px) {
   .pagebar {
-  width: 20%;
-  height: 50px;
+    ul {
+      a {
+        width: 40px;
+      }
+    }
   }
 }
 </style>
