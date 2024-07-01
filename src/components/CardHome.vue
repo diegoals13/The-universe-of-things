@@ -1,39 +1,25 @@
 <template>
+  <div class="wrapper">
+    <div class="modall" :class="{ 'visible': isOpen }">
+
+      <div class="btn btn-warning col-3" @click="openModal">Close</div>
+    </div>
+  </div>
   <div class="row justify-content-center">
     <div class="col-12 mb-3" id="contprincipal">
       <div class="input-group mb-3" id="containersearch">
-        <input
-          v-model="filterName"
-          type="text"
-          id="search"
-          class="form-control"
-          placeholder="Filter by Name"
-        />
+        <input v-model="filterName" type="text" id="search" class="form-control" placeholder="Filter by Name" />
       </div>
       <div class="input-group mb-3" id="containersearch">
-        <input
-          v-model="filterRace"
-          type="text"
-          id="search"
-          class="form-control"
-          placeholder="Filter by Race"
-        />
+        <input v-model="filterRace" type="text" id="search" class="form-control" placeholder="Filter by Race" />
       </div>
     </div>
-    <div
-      id="cardcontainer"
-      v-for="(character, index) in filteredCharacters"
-      :key="index"
-      class="row col-2 row-cols-1 row-cols-md-1 g-4"
-    >
+    <div id="cardcontainer" v-for="(character, index) in filteredCharacters" :key="index"
+      class="row col-2 row-cols-1 row-cols-md-1 g-4">
       <div class="col">
         <div class="card h-100" id="cardcontent">
           <div id="contentimg">
-            <img
-              :src="character.image"
-              class="card-img-top"
-              alt="Imagen del personaje"
-            />
+            <img :src="character.image" class="card-img-top" alt="Imagen del personaje" />
           </div>
           <div class="card-body">
             <h5 class="card-title">Nombre</h5>
@@ -48,24 +34,11 @@
             <p class="card-text">{{ character.maxKi }}</p>
           </div>
           <div class="card-body">
-            <button
-              class="btn btn-warning col-5 mb-2 readBTN"
-              @click="openModal"
-            >
+            <button class="btn btn-warning col-5 mb-2 readBTN" @click="openModal">
               READ MORE
             </button>
           </div>
           <div class="card-body">
-            <div class="modal">
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque
-                ab laborum mollitia debitis incidunt minima totam quisquam
-                corrupti pariatur porro eaque cumque, quae hic modi illum ipsa
-                iusto rem? Mollitia tenetur nulla porro alias explicabo veniam
-                et inventore sapiente molestias, autem voluptate reprehenderit
-                maxime saepe voluptas, nostrum praesentium! Quo, delectus?
-              </p>
-            </div>
           </div>
         </div>
       </div>
@@ -78,10 +51,10 @@ import { ref, onMounted, computed, watch } from "vue";
 import { usePageStore } from "@/stores/usePageStore";
 
 const characters = ref([]);
+const isOpen = ref(false);
 const filterName = ref("");
 const filterRace = ref("");
 const filteredCharacters = ref([]);
-
 const pageStore = usePageStore();
 const currentPage = computed(() => pageStore.currentPage);
 
@@ -128,12 +101,51 @@ watch(filterName, () => {
 watch(filterRace, () => {
   applyFilter();
 });
+const openModal = () => {
+  isOpen.value = !isOpen.value;
+}
 </script>
 
 <style lang="scss" scoped>
-.modal {
-  position: absolute;
+.wrapper {
+  position: fixed;
+  width: 100%;
+  display: flex;
+  justify-content: center;
   z-index: 999;
+}
+
+.modall {
+  opacity: 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  border: 3px solid black;
+  border-radius: 15px;
+  background-color: #222;
+  color: rgb(204, 204, 204);
+  text-shadow: 2px 2px 5px black;
+  font-size: 25px;
+  font-weight: 600;
+  max-width: 750px;
+  gap: 10px;
+  padding: 30px 25px;
+  box-shadow: 10px 6px 12px 1px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+}
+
+.visible {
+  opacity: 1;
+}
+
+.modall-content {
+  // z-index: 999;
+  width: 50%;
+}
+
+.btn {
+  text-shadow: none;
 }
 
 .cardBack {
@@ -155,11 +167,13 @@ watch(filterRace, () => {
   height: 40px !important;
   margin-right: 100px !important;
 }
+
 #search {
   background-color: rgba(217, 217, 217, 0.75) !important;
   border-color: #373a40 !important;
   border-radius: 12px !important;
 }
+
 #contprincipal {
   display: flex;
   flex-direction: column;
@@ -269,15 +283,18 @@ p {
     padding: 5px;
     text-align: center;
   }
+
   .col {
     margin-top: 12px;
   }
+
   #containersearch {
     border-radius: 12px !important;
     width: 100px !important;
     height: 30px !important;
     margin-right: 20px !important;
   }
+
   #search {
     width: 100px !important;
     height: 30px !important;
