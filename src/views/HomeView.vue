@@ -15,7 +15,7 @@ characterStore.get()  */
     <Logo></Logo>
     <Filter></Filter>
     <CardHome></CardHome>
-    <Pagebar></Pagebar>
+    <Pagebar :pages="8"></Pagebar>
 
     <!--   <div v-if="characterStore.isLoading">
 

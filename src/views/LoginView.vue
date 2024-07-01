@@ -17,7 +17,7 @@ const handleSubmit = async () => {
     errorMessage.value = error.message;
   }
 };
-</script>-- src/views/LoginView.vue -->
+</script>
 <template>
   <main>
     <div class="login">

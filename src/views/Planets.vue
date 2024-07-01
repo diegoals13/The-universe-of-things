@@ -7,7 +7,7 @@ import Pagebar from "@/components/Pagebar.vue";
   <main>
     <Logo></Logo>
     <CardPlanet></CardPlanet>
-    <Pagebar></Pagebar>
+    <Pagebar :pages="2"></Pagebar>
   </main>
 </template>
 
