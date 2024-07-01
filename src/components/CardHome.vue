@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <div class="modall" :class="{ 'visible': isOpen }">
-
+      <p v-if="isOpen">{{ characters[currentCharecterIndex].description }}</p>
       <div class="btn btn-warning col-3" @click="openModal">Close</div>
     </div>
   </div>
@@ -34,11 +34,9 @@
             <p class="card-text">{{ character.maxKi }}</p>
           </div>
           <div class="card-body">
-            <button class="btn btn-warning col-5 mb-2 readBTN" @click="openModal">
+            <button class="btn btn-warning col-5 mb-2 readBTN" @click="openModal(index)">
               READ MORE
             </button>
-          </div>
-          <div class="card-body">
           </div>
         </div>
       </div>
@@ -57,6 +55,7 @@ const filterRace = ref("");
 const filteredCharacters = ref([]);
 const pageStore = usePageStore();
 const currentPage = computed(() => pageStore.currentPage);
+const currentCharecterIndex = ref(0);
 
 const fetchCharacters = async (page) => {
   try {
@@ -101,8 +100,9 @@ watch(filterName, () => {
 watch(filterRace, () => {
   applyFilter();
 });
-const openModal = () => {
+const openModal = (index) => {
   isOpen.value = !isOpen.value;
+  currentCharecterIndex.value = index;
 }
 </script>
 
