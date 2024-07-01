@@ -2,19 +2,38 @@
   <div class="row justify-content-center">
     <div class="col-12 mb-3" id="contprincipal">
       <div class="input-group mb-3" id="containersearch">
-        <input v-model="filterName" type="text" id="search"  class="form-control" placeholder="Filter by Name">
+        <input
+          v-model="filterName"
+          type="text"
+          id="search"
+          class="form-control"
+          placeholder="Filter by Name"
+        />
       </div>
       <div class="input-group mb-3" id="containersearch">
-        <input v-model="filterRace" type="text" id="search"  class="form-control" placeholder="Filter by Race">
+        <input
+          v-model="filterRace"
+          type="text"
+          id="search"
+          class="form-control"
+          placeholder="Filter by Race"
+        />
       </div>
-     
     </div>
-    <div id="cardcontainer" v-for="(character, index) in filteredCharacters" :key="index"
-      class="row col-2 row-cols-1 row-cols-md-1 g-4">
+    <div
+      id="cardcontainer"
+      v-for="(character, index) in filteredCharacters"
+      :key="index"
+      class="row col-2 row-cols-1 row-cols-md-1 g-4"
+    >
       <div class="col">
         <div class="card h-100" id="cardcontent">
           <div id="contentimg">
-            <img :src="character.image" class="card-img-top" alt="Imagen del personaje" />
+            <img
+              :src="character.image"
+              class="card-img-top"
+              alt="Imagen del personaje"
+            />
           </div>
           <div class="card-body">
             <h5 class="card-title">Nombre</h5>
@@ -28,13 +47,31 @@
             <h5 class="card-title">Máximo Ki</h5>
             <p class="card-text">{{ character.maxKi }}</p>
           </div>
+          <div class="card-body">
+            <button
+              class="btn btn-warning col-5 mb-2 readBTN"
+              @click="openModal"
+            >
+              READ MORE
+            </button>
+          </div>
+          <div class="card-body">
+            <div class="modal">
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque
+                ab laborum mollitia debitis incidunt minima totam quisquam
+                corrupti pariatur porro eaque cumque, quae hic modi illum ipsa
+                iusto rem? Mollitia tenetur nulla porro alias explicabo veniam
+                et inventore sapiente molestias, autem voluptate reprehenderit
+                maxime saepe voluptas, nostrum praesentium! Quo, delectus?
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </template>
-
-
 
 <script setup>
 import { ref, onMounted, computed, watch } from "vue";
@@ -61,9 +98,13 @@ const fetchCharacters = async (page) => {
 };
 
 const applyFilter = () => {
-  filteredCharacters.value = characters.value.filter(character => {
-    const nameMatch = filterName.value ? character.name.toLowerCase().includes(filterName.value.toLowerCase()) : true;
-    const raceMatch = filterRace.value ? character.race.toLowerCase().includes(filterRace.value.toLowerCase()) : true;
+  filteredCharacters.value = characters.value.filter((character) => {
+    const nameMatch = filterName.value
+      ? character.name.toLowerCase().includes(filterName.value.toLowerCase())
+      : true;
+    const raceMatch = filterRace.value
+      ? character.race.toLowerCase().includes(filterRace.value.toLowerCase())
+      : true;
     return nameMatch && raceMatch;
   });
 };
@@ -89,9 +130,12 @@ watch(filterRace, () => {
 });
 </script>
 
-
-
 <style lang="scss" scoped>
+.modal {
+  position: absolute;
+  z-index: 999;
+}
+
 .cardBack {
   float: left;
   font-size: 1.2em;
@@ -105,28 +149,23 @@ watch(filterRace, () => {
   transform: rotateY(180deg);
 }
 
-#containersearch{
+#containersearch {
   border-radius: 12px !important;
-    width: 150px !important;
-    height: 40px !important;
-    margin-right: 100px !important;
-    
+  width: 150px !important;
+  height: 40px !important;
+  margin-right: 100px !important;
 }
-#search{
+#search {
   background-color: rgba(217, 217, 217, 0.75) !important;
-    border-color: #373a40 !important;
-    border-radius: 12px !important;
+  border-color: #373a40 !important;
+  border-radius: 12px !important;
 }
-#contprincipal{
+#contprincipal {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
- 
+
   width: 100%;
-  
-  
-  
-  
 }
 
 .card {
@@ -147,7 +186,6 @@ img {
 }
 
 #cardcontainer {
-
   background-color: rgba(78, 82, 88, 0.7);
   border: 3px solid rgba(0, 0, 0, 0.7);
   border-radius: 16px;
@@ -196,10 +234,7 @@ p {
   perspective: 800px;
   transition: all 0.3s ease 0s;
   width: 23.7%;
-
-
 }
-
 
 @media only screen and (max-width: 450px) {
   #cardcontainer {
@@ -225,11 +260,11 @@ p {
   }
 
   #contentimg {
-  margin: auto;
-  padding: 5px 20px;
-  border-radius: 20px;
+    margin: auto;
+    padding: 5px 20px;
+    border-radius: 20px;
   }
-  
+
   .card-body {
     padding: 5px;
     text-align: center;
@@ -237,18 +272,15 @@ p {
   .col {
     margin-top: 12px;
   }
-  #containersearch{
-  border-radius: 12px !important;
+  #containersearch {
+    border-radius: 12px !important;
     width: 100px !important;
     height: 30px !important;
-    margin-right:20px !important;
-    
+    margin-right: 20px !important;
+  }
+  #search {
+    width: 100px !important;
+    height: 30px !important;
+  }
 }
-#search{
-  width: 100px !important;
-  height: 30px !important;
-}
-
-}
-
 </style>
