@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <div class="modall" :class="{ 'visible': isOpen }">
-      <p v-if="isOpen">{{ characters[currentCharecterIndex].description }}</p>
+      <p v-if="isOpen">{{ characters[currentCharacterIndex].description }}</p>
       <div class="btn btn-warning col-3" @click="openModal">Close</div>
     </div>
   </div>
@@ -51,7 +51,6 @@
 </template>
 
 <script setup>
-// script setup
 import { ref, onMounted, computed, watch } from "vue";
 import { usePageStore } from "@/stores/usePageStore";
 import { useFavoritesStore } from "@/stores/useFavoritesStore";
@@ -60,7 +59,9 @@ const characters = ref([]);
 const filterName = ref("");
 const filterRace = ref("");
 const filteredCharacters = ref([]);
-const currentCharecterIndex = ref(0);
+const currentCharacterIndex = ref(0);
+
+const isOpen = ref(false);
 
 const pageStore = usePageStore();
 const currentPage = computed(() => pageStore.currentPage);
@@ -69,7 +70,7 @@ const favoritesStore = useFavoritesStore();
 
 const openModal = (index) => {
   isOpen.value = !isOpen.value;
-  currentCharecterIndex.value = index;
+  currentCharacterIndex.value = index;
 }
 
 const fetchCharacters = async (page) => {
@@ -120,6 +121,7 @@ watch(filterRace, () => {
   applyFilter();
 });
 </script>
+
 
 <style lang="scss" scoped>
 .wrapper {
@@ -200,7 +202,7 @@ watch(filterRace, () => {
 .card {
   background: #222;
   cursor: pointer;
-  height: 300px;
+  height: 450px;
   transform-style: preserve-3d;
   transition: transform 0.4s ease 0s;
   width: 100%;
@@ -220,7 +222,7 @@ img {
   border-radius: 16px;
   margin: 20px;
   width: 420px;
-  height: 650px;
+  height: 750px;
   transform-style: preserve-3d;
   transition: transform 0.4s ease 0s;
   -webkit-animation: giro 1s 1;
