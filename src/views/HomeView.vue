@@ -10,10 +10,10 @@ import ButtonScroll from "@/components/ButtonScroll.vue";
 <template>
   <main>
     <Logo></Logo>
-   
+
     <CardHome></CardHome>
     <ButtonScroll></ButtonScroll>
-    <Pagebar></Pagebar>
+    <Pagebar :pages="8"></Pagebar>
 
 
   </main>
