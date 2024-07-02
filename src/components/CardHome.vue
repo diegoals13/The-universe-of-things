@@ -1,31 +1,22 @@
 <template>
+  <div class="wrapper">
+    <div class="modall" :class="{ 'visible': isOpen }">
+      <p v-if="isOpen">{{ characters[currentCharecterIndex].description }}</p>
+      <div class="btn btn-warning col-3" @click="openModal">Close</div>
+    </div>
+  </div>
+
   <div class="row justify-content-center">
     <div class="col-12 mb-3" id="contprincipal">
       <div class="input-group mb-3" id="containersearch">
-        <input
-          v-model="filterName"
-          type="text"
-          id="search"
-          class="form-control"
-          placeholder="Filter by Name"
-        />
+        <input v-model="filterName" type="text" id="search" class="form-control" placeholder="Filter by Name" />
       </div>
       <div class="input-group mb-3" id="containersearch">
-        <input
-          v-model="filterRace"
-          type="text"
-          id="search"
-          class="form-control"
-          placeholder="Filter by Race"
-        />
+        <input v-model="filterRace" type="text" id="search" class="form-control" placeholder="Filter by Race" />
       </div>
     </div>
-    <div
-      id="cardcontainer"
-      v-for="(character, index) in filteredCharacters"
-      :key="index"
-      class="row col-2 row-cols-1 row-cols-md-1 g-4"
-    >
+    <div id="cardcontainer" v-for="(character, index) in filteredCharacters" :key="index"
+      class="row col-2 row-cols-1 row-cols-md-1 g-4">
       <div class="col">
         <div id="butonbox">
           <button id="favorites" @click="addToFavorites(character)">
@@ -34,11 +25,7 @@
         </div>
         <div class="card h-100" id="cardcontent">
           <div id="contentimg">
-            <img
-              :src="character.image"
-              class="card-img-top"
-              alt="Imagen del personaje"
-            />
+            <img :src="character.image" class="card-img-top" alt="Imagen del personaje" />
           </div>
           <div class="card-body">
             <h5 class="card-title">Nombre</h5>
@@ -51,6 +38,11 @@
           <div class="card-body">
             <h5 class="card-title">Máximo Ki</h5>
             <p class="card-text">{{ character.maxKi }}</p>
+          </div>
+          <div class="card-body">
+            <button class="btn btn-warning col-5 mb-2 readBTN" @click="openModal(index)">
+              READ MORE
+            </button>
           </div>
         </div>
       </div>
@@ -68,11 +60,17 @@ const characters = ref([]);
 const filterName = ref("");
 const filterRace = ref("");
 const filteredCharacters = ref([]);
+const currentCharecterIndex = ref(0);
 
 const pageStore = usePageStore();
 const currentPage = computed(() => pageStore.currentPage);
 
 const favoritesStore = useFavoritesStore();
+
+const openModal = (index) => {
+  isOpen.value = !isOpen.value;
+  currentCharecterIndex.value = index;
+}
 
 const fetchCharacters = async (page) => {
   try {
@@ -124,6 +122,47 @@ watch(filterRace, () => {
 </script>
 
 <style lang="scss" scoped>
+.wrapper {
+  position: fixed;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modall {
+  opacity: 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  border: 3px solid black;
+  border-radius: 15px;
+  background-color: #222;
+  color: rgb(204, 204, 204);
+  text-shadow: 2px 2px 5px black;
+  font-size: 25px;
+  font-weight: 600;
+  max-width: 750px;
+  gap: 10px;
+  padding: 30px 25px;
+  box-shadow: 10px 6px 12px 1px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+}
+
+.visible {
+  opacity: 1;
+}
+
+.modall-content {
+  // z-index: 999;
+  width: 50%;
+}
+
+.btn {
+  text-shadow: none;
+}
+
 .cardBack {
   float: left;
   font-size: 1.2em;
@@ -143,11 +182,13 @@ watch(filterRace, () => {
   height: 40px !important;
   margin-right: 100px !important;
 }
+
 #search {
   background-color: rgba(217, 217, 217, 0.75) !important;
   border-color: #373a40 !important;
   border-radius: 12px !important;
 }
+
 #contprincipal {
   display: flex;
   flex-direction: column;
@@ -223,13 +264,16 @@ p {
   transition: all 0.3s ease 0s;
   width: 23.7%;
 }
+
 #butonbox {
   width: 100%;
   display: flex;
   justify-content: end;
+
   #favorites {
     background-color: rgba(255, 255, 255, 0);
     border: none;
+
     #star {
       width: 30px;
       height: 30px;
@@ -271,27 +315,32 @@ p {
     padding: 0;
     text-align: center;
   }
+
   .col {
     margin-top: 0;
   }
+
   #containersearch {
     border-radius: 12px !important;
     width: 100px !important;
     height: 30px !important;
     margin-right: 20px !important;
   }
+
   #search {
     width: 100px !important;
     height: 30px !important;
   }
+
   #butonbox {
-  #favorites {
-    padding: 0;
-    #star {
-      width: 15px;
-      height: 15px;
+    #favorites {
+      padding: 0;
+
+      #star {
+        width: 15px;
+        height: 15px;
+      }
     }
   }
-}
 }
 </style>
