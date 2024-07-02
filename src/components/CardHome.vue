@@ -200,7 +200,8 @@ watch(filterRace, () => {
 }
 
 .card {
-  background: #222;
+  // background: hsla(0, 0%, 13%, 0.286);
+  // backdrop-filter: blur(10px);
   cursor: pointer;
   height: 450px;
   transform-style: preserve-3d;
@@ -218,6 +219,7 @@ img {
 
 #cardcontainer {
   background-color: rgba(78, 82, 88, 0.7);
+  backdrop-filter: blur(3px);
   border: 3px solid rgba(0, 0, 0, 0.7);
   border-radius: 16px;
   margin: 20px;
